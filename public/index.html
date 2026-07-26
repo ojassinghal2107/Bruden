@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bruden — Crafted Chocolates</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="loading">
+
+  <!-- Full-page 3D world canvas — fixed behind everything -->
+  <canvas id="worldCanvas"></canvas>
+  <!-- Full-page river overlay canvas -->
+  <canvas id="riverCanvas"></canvas>
+
+  <!-- Page loader -->
+  <div class="loader" id="loader">
+    <div class="loader__logo">
+      <img src="/images/brudenlogo.png" alt="Bruden" class="loader__b" />
+    </div>
+    <div class="loader__bar"><div class="loader__fill" id="loaderFill"></div></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav__logo">
+      <img src="/images/brudenlogo.png" alt="Bruden" class="logo-b" />
+    </div>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="#hero" class="nav__link">Home</a></li>
+      <li><a href="#story" class="nav__link">Story</a></li>
+      <li><a href="#collection" class="nav__link">Collection</a></li>
+      <li><a href="#contact" class="nav__link">Contact</a></li>
+    </ul>
+    <div class="nav__actions">
+      <button class="nav__cart" id="cartBtn" aria-label="Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        <span class="nav__cart-count" id="cartCount">0</span>
+      </button>
+      <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="hero" id="hero">
+    <!-- Vignette -->
+    <div class="hero__vignette"></div>
+
+    <!-- Hero text content -->
+    <div class="hero__content" id="heroContent">
+      <p class="hero__eyebrow" id="heroEyebrow" style="display:none"></p>
+      <h1 class="hero__title" id="heroTitle">
+        <span class="hero__title-b">b</span><span class="hero__title-rest">ruden</span>
+      </h1>
+      <p class="hero__sub" id="heroSub">Crafted Chocolates</p>
+      <div class="hero__divider" id="heroDivider">
+        <span class="hero__line"></span>
+      </div>
+      <p class="hero__tagline" id="heroTagline">A Den of Indulgence</p>
+      <a href="#collection" class="hero__cta" id="heroCta">Explore the Den</a>
+    </div>
+
+    <div class="hero__scroll" id="heroScroll">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ STORY ═══════════════ -->
+  <section class="story" id="story">
+    <div class="story__wrap">
+      <div class="story__visual reveal-left">
+        <div class="story__ring story__ring--outer"></div>
+        <div class="story__ring story__ring--inner"></div>
+        <div class="story__circle">
+          <img src="/images/brudenlogo.png" alt="Bruden" class="story__logo-img" />
+        </div>
+      </div>
+      <div class="story__text reveal-right">
+        <span class="section-label">Our Story</span>
+        <h2 class="section-title">Born From<br /><em>The Den</em></h2>
+        <p class="story__body">
+          From the wild heart of mountain cocoa comes chocolate forged with primal strength.
+          Bruden is a tiger's roar in every bite — fierce, untamed, and deeply refined.
+        </p>
+        <p class="story__body">
+          Like the tiger that rules the den, every bar carries a mark of dominance —
+          of raw craft, ancient cocoa, and something powerfully worth savouring.
+        </p>
+        <div class="story__pillars">
+          <div class="story__pillar"><span class="pillar-icon">◈</span><span>Wild Mountain Cocoa</span></div>
+          <div class="story__pillar"><span class="pillar-icon">◈</span><span>Zero Compromise Craft</span></div>
+          <div class="story__pillar"><span class="pillar-icon">◈</span><span>Forged in the Den</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ COLLECTION ═══════════════ -->
+  <section class="collection" id="collection">
+    <div class="collection__header reveal-up">
+      <span class="section-label">The Collection</span>
+      <h2 class="section-title">Enter the Den</h2>
+      <p class="collection__sub">Each piece, a journey through mountain and mist.</p>
+    </div>
+    <div class="collection__grid" id="productGrid">
+      <div class="collection__loading">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONTACT ═══════════════ -->
+  <section class="contact" id="contact">
+    <div class="contact__wrap">
+      <div class="contact__info reveal-left">
+        <span class="section-label">Reach Us</span>
+        <h2 class="section-title">Step Into<br /><em>The Den</em></h2>
+        <p class="contact__body">For gifting, bulk orders, or to share your encounter with the den.</p>
+        <div class="contact__meta">
+          <div class="contact__row">
+            <span class="contact__key">Instagram</span>
+            <span class="contact__val">@bruden.chocolate</span>
+          </div>
+          <div class="contact__row">
+            <span class="contact__key">Motto</span>
+            <span class="contact__val">Indulge. Savor. Belong.</span>
+          </div>
+        </div>
+      </div>
+      <form class="contact__form reveal-right" id="contactForm">
+        <div class="field"><input type="text" id="contactName" placeholder="Your Name" required /></div>
+        <div class="field"><input type="email" id="contactEmail" placeholder="Your Email" required /></div>
+        <div class="field"><textarea id="contactMessage" placeholder="Your Message" rows="5" required></textarea></div>
+        <button type="submit" class="btn-gold">Send Message</button>
+        <p class="form-msg" id="formFeedback"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <img src="/images/brudenlogo.png" alt="Bruden" class="footer__logo-b" />
+      <p class="footer__tag">Crafted Chocolates &nbsp;◈&nbsp; The Tiger's Den</p>
+      <div class="footer__rule"></div>
+      <p class="footer__copy">© 2025 Bruden. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════ CART DRAWER ═══════════════ -->
+  <div class="overlay" id="cartOverlay"></div>
+  <aside class="cart" id="cartDrawer">
+    <div class="cart__head">
+      <h3>Your Den</h3>
+      <button class="cart__close" id="cartClose">✕</button>
+    </div>
+    <div class="cart__body" id="cartItems">
+      <p class="cart__empty">Your den is empty.</p>
+    </div>
+    <div class="cart__foot" id="cartFooter" style="display:none;">
+      <div class="cart__total">
+        <span>Total</span>
+        <span id="cartTotal">₹0</span>
+      </div>
+      <button class="btn-gold btn-gold--full" id="checkoutBtn">Proceed to Order</button>
+    </div>
+  </aside>
+
+  <!-- ═══════════════ CHECKOUT MODAL ═══════════════ -->
+  <div class="modal-bg" id="checkoutOverlay" style="display:none;">
+    <div class="modal">
+      <button class="modal__close" id="modalClose">✕</button>
+      <h3 class="modal__title">Complete Your Order</h3>
+      <form id="checkoutForm">
+        <div class="field"><input type="text"   id="orderName"    placeholder="Full Name"         required /></div>
+        <div class="field"><input type="email"  id="orderEmail"   placeholder="Email"             required /></div>
+        <div class="field"><input type="tel"    id="orderPhone"   placeholder="Phone"             required /></div>
+        <div class="field"><textarea            id="orderAddress" placeholder="Delivery Address" rows="3" required></textarea></div>
+        <button type="submit" class="btn-gold btn-gold--full">Place Order</button>
+        <p class="form-msg" id="orderFeedback"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- CDNs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script src="/js/world.js?v=6"></script>
+  <script src="/js/river.js?v=12"></script>
+  <script src="/js/cart.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
