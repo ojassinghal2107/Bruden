@@ -5,6 +5,7 @@ generator client {
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
+  // Aiven requires SSL — connection string handles it via ?ssl={"rejectUnauthorized":true}
 }
 
 model Product {
