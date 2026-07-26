@@ -27,6 +27,11 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`🍫 Bruden running at http://localhost:${PORT}`);
-});
+// Start server only when running locally (not on Vercel)
+if (process.env.VERCEL !== '1') {
+  app.listen(PORT, () => {
+    console.log(`🍫 Bruden running at http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
