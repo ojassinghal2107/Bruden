@@ -6,6 +6,32 @@ const Cart = (() => {
     localStorage.setItem('bruden_cart', JSON.stringify(items));
   }
 
+  function showToast(name) {
+    /* Remove any existing toast */
+    const old = document.getElementById('brudenToast');
+    if (old) old.remove();
+
+    const toast = document.createElement('div');
+    toast.id = 'brudenToast';
+    toast.innerHTML = `
+      <span class="toast__icon">◈</span>
+      <div class="toast__text">
+        <strong>${name}</strong>
+        <span>Added to the Den</span>
+      </div>
+    `;
+    document.body.appendChild(toast);
+
+    /* Trigger animation */
+    requestAnimationFrame(() => toast.classList.add('toast--show'));
+
+    /* Auto-dismiss after 2.5s */
+    setTimeout(() => {
+      toast.classList.remove('toast--show');
+      setTimeout(() => toast.remove(), 400);
+    }, 2500);
+  }
+
   function add(product) {
     const existing = items.find(i => i.id === product.id);
     if (existing) {
@@ -16,6 +42,7 @@ const Cart = (() => {
     save();
     render();
     updateCount();
+    showToast(product.name);
   }
 
   function remove(id) {
